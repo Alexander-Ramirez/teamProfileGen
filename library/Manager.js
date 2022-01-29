@@ -11,7 +11,7 @@ class Manager extends Employee{
         return "Manager";
     };
 
-    getGithub(){
+    getOfficeNumber(){
         return this.officeNumber;
     };
 };

@@ -54,3 +54,41 @@ let generateIntern = (internResponse) => {
     workersArray.push(internCard);
     return workersArray;
 };
+
+let generateHTML = () => {
+    let allArray = workersArray.join("");
+
+    let workPage = 
+        `<!DOCTYPE html>
+            <html lang="en">
+                <head>
+                    <meta charset="UTF-8">
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+                    <link rel="stylesheet" href="./styles.css">
+                    <title>Team Profile</title>
+                </head>
+                <body>
+                    <header>
+                        <h1> List of Workers </h1>
+                    </header>
+
+                    <main>
+                        <div class="justify-content-center align-items-center d-flex">
+                            ${allArray}
+                        </div>
+                    </main>
+
+                    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+                </body>
+            </html>`;
+
+    const filename = `./dist/index.html`;
+    fs.writeFile(filename, workPage, (err) =>
+        err ? console.error(err) : console.log("page generated successfully"));
+};
+
+const workersCards = {generateManager, generateEngineer, generateIntern, generateHTML};
+
+module.exports = workersCards;
